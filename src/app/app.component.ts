@@ -5,7 +5,7 @@ import { RoutesTableComponent } from './routes-table/routes-table.component';
   selector: 'app-root',
   template: `
     <div class="container">
-      <h1>Таблица маршрутов</h1>
+      <h3>Действующие Маршруты IPv4</h3>
       <app-routes-table></app-routes-table>
     </div>
   `,
@@ -15,11 +15,10 @@ import { RoutesTableComponent } from './routes-table/routes-table.component';
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
-      h1 {
-        text-align: center;
-        margin-bottom: 30px;
-        color: #333;
+      h3 {
+        margin-bottom: 10px;
       }
     `,
   ],

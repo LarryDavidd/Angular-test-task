@@ -1,5 +1,4 @@
 .table-container {
-  margin: 20px;
   overflow-x: auto;
 
   table {
@@ -7,7 +6,8 @@
     border-collapse: collapse;
     margin-top: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #32475b;
+    font-weight: 600;
 
     th,
     td {
@@ -18,7 +18,6 @@
 
     th {
       background-color: #f5f7fa;
-      font-weight: 600;
       cursor: pointer;
       position: relative;
       color: #2c3e50;
@@ -31,10 +30,6 @@
 
     tr:hover {
       background-color: #f8f9fa;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
     }
   }
 }
