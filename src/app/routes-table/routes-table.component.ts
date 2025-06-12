@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Route } from './models/routes-table.model';
+import { Sort, Route } from './models/routes-table.model';
 import { RouteService } from './services/routes-table.service';
-import { map } from 'rxjs/operators';
+import { SortRoutesPipe } from './pipes/sort-by-address.pipe';
 
 @Component({
   selector: 'app-routes-table',
+  standalone: true,
+  imports: [SortRoutesPipe],
   templateUrl: './routes-table.component.html',
   styleUrls: ['./routes-table.component.scss'],
 })
 export class RoutesTableComponent implements OnInit {
   routes: Route[] = [];
   sortedColumn: keyof Route | null = null;
-  sortDirection: 'asc' | 'desc' = 'asc';
+  sortDirection: Sort = Sort.NONE;
+  sortField: keyof Route = 'address';
 
   constructor(private routeService: RouteService) {}
 
@@ -25,30 +28,19 @@ export class RoutesTableComponent implements OnInit {
     });
   }
 
-  sort(column: keyof Route): void {
-    if (this.sortedColumn === column) {
-      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
-    } else {
-      this.sortedColumn = column;
-      this.sortDirection = 'asc';
-    }
-
-    this.routeService
-      .getRoutes()
-      .pipe(
-        map((routes) =>
-          this.routeService.sortRoutes(routes, column, this.sortDirection)
-        )
-      );
-  }
-
   getSortIcon(column: keyof Route): string {
     if (this.sortedColumn !== column) return '';
     return this.sortDirection === 'asc' ? '↑' : '↓';
   }
 
-  // getInterfaceOrder(interfaceName: string): number {
-  //   const index = this.interfaceOrder.indexOf(interfaceName);
-  //   return index === -1 ? this.interfaceOrder.length : index;
-  // }
+  sort(item: keyof Route) {
+    this.sortField = item;
+
+    if (this.sortDirection === Sort.NONE) {
+      this.sortDirection = Sort.ASC;
+    } else {
+      this.sortDirection =
+        this.sortDirection === Sort.ASC ? Sort.DESC : Sort.ASC;
+    }
+  }
 }

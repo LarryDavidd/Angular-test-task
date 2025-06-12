@@ -11,3 +11,9 @@ export enum Iinterface {
   'HOME-NETWORK' = 'Домашняя сеть',
   'GUEST-NETWORK' = 'Гостевая сеть',
 }
+
+export enum Sort {
+  ASC = 'asc',
+  DESC = 'desc',
+  NONE = 'none',
+}

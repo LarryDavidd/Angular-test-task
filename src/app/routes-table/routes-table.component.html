@@ -12,7 +12,8 @@
       </tr>
     </thead>
     <tbody>
-      @for (route of routes; track route.uuid) {
+      @for (route of (routes | sortRoutes: sortField: sortDirection); track
+      route.uuid) {
       <tr>
         <td>{{ route.address }}</td>
         <td>{{ route.gateway }}</td>
