@@ -31,7 +31,7 @@ export class RoutesTableComponent implements OnInit {
     if (this.sortField !== column || this.sortDirection === Sort.NONE) {
       return '';
     }
-    return this.sortDirection === Sort.ASC ? 'triangle' : 'triangle inverted';
+    return this.sortDirection === Sort.DESC ? 'triangle' : 'triangle inverted';
   }
 
   sort(item: keyof Route) {
