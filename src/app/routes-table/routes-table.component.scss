@@ -33,3 +33,27 @@
     }
   }
 }
+
+.tabble__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabble__sort-icon {
+  width: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #777373;
+  transition: transform 0.2s;
+}
+
+.inverted {
+  transform: rotate(180deg);
+}

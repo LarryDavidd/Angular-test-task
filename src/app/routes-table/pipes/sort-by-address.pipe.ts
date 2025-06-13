@@ -5,8 +5,13 @@ import { Route, Sort } from '../models/routes-table.model';
   name: 'sortRoutes',
 })
 export class SortRoutesPipe implements PipeTransform {
-  transform(routes: Route[], field: keyof Route, direction: Sort): Route[] {
+  transform(
+    routes: Route[],
+    field: keyof Route | null,
+    direction: Sort
+  ): Route[] {
     if (!routes || direction === Sort.NONE) return routes || [];
+    if (field === null) return routes || [];
 
     return [...routes].sort((a, b) => {
       let compareResult = 0;

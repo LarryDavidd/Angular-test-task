@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Route } from '../models/routes-table.model';
+import { Route, Sort } from '../models/routes-table.model';
 import { route } from '../data';
 
 @Injectable({
@@ -27,7 +27,7 @@ export class RouteService {
   sortRoutes(
     routes: Route[],
     column: keyof Route,
-    direction: 'asc' | 'desc'
+    direction: Sort.ASC | Sort.DESC
   ): Route[] {
     return [...routes].sort((a, b) => {
       let compareResult: number;
@@ -38,7 +38,7 @@ export class RouteService {
         compareResult = String(a[column]).localeCompare(String(b[column]));
       }
 
-      return direction === 'asc' ? compareResult : -compareResult;
+      return direction === Sort.ASC ? compareResult : -compareResult;
     });
   }
 }

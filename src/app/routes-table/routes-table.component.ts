@@ -12,9 +12,8 @@ import { SortRoutesPipe } from './pipes/sort-by-address.pipe';
 })
 export class RoutesTableComponent implements OnInit {
   routes: Route[] = [];
-  sortedColumn: keyof Route | null = null;
   sortDirection: Sort = Sort.NONE;
-  sortField: keyof Route = 'address';
+  sortField: keyof Route | null = null;
 
   constructor(private routeService: RouteService) {}
 
@@ -28,12 +27,16 @@ export class RoutesTableComponent implements OnInit {
     });
   }
 
-  getSortIcon(column: keyof Route): string {
-    if (this.sortedColumn !== column) return '';
-    return this.sortDirection === 'asc' ? '↑' : '↓';
+  getSortCondition(column: keyof Route): string {
+    if (this.sortField !== column || this.sortDirection === Sort.NONE) {
+      return '';
+    }
+    return this.sortDirection === Sort.ASC ? 'triangle' : 'triangle inverted';
   }
 
   sort(item: keyof Route) {
+    if (this.sortField !== item) this.sortDirection = Sort.NONE;
+
     this.sortField = item;
 
     if (this.sortDirection === Sort.NONE) {

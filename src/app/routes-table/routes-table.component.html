@@ -3,11 +3,37 @@
     <thead>
       <tr>
         <th (click)="sort('address')">
-          Адрес назначения {{ getSortIcon("address") }}
+          <div class="tabble__header">
+            Адрес назначения
+            <div class="tabble__sort-icon">
+              <span
+                class="triangle"
+                [classList]="getSortCondition('address')"
+              ></span>
+            </div>
+          </div>
         </th>
-        <th (click)="sort('gateway')">Шлюз {{ getSortIcon("gateway") }}</th>
+        <th (click)="sort('gateway')">
+          <div class="tabble__header">
+            Шлюз
+            <div class="tabble__sort-icon">
+              <span
+                class="triangle"
+                [classList]="getSortCondition('gateway')"
+              ></span>
+            </div>
+          </div>
+        </th>
         <th (click)="sort('interface')">
-          Интерфейс {{ getSortIcon("interface") }}
+          <div class="tabble__header">
+            Интерфейс
+            <div class="tabble__sort-icon">
+              <span
+                class="triangle"
+                [classList]="getSortCondition('interface')"
+              ></span>
+            </div>
+          </div>
         </th>
       </tr>
     </thead>
