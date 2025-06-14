@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Sort, Route } from './models/routes-table.model';
 import { RouteService } from './services/routes-table.service';
 import { SortRoutesPipe } from './pipes/sort-by-address.pipe';
+import { NoSelectDirective } from '../shared/derectives/no-select.directive';
 
 @Component({
   selector: 'app-routes-table',
   standalone: true,
-  imports: [SortRoutesPipe],
+  imports: [SortRoutesPipe, NoSelectDirective],
   templateUrl: './routes-table.component.html',
   styleUrls: ['./routes-table.component.scss'],
 })
