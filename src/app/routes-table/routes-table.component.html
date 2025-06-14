@@ -1,0 +1,51 @@
+<div class="table-container">
+  <table>
+    <thead appNoSelect>
+      <tr>
+        <th (click)="sort('address')">
+          <div class="tabble__header">
+            Адрес назначения
+            <div class="tabble__sort-icon">
+              <span
+                class="triangle"
+                [classList]="getSortCondition('address')"
+              ></span>
+            </div>
+          </div>
+        </th>
+        <th (click)="sort('gateway')">
+          <div class="tabble__header">
+            Шлюз
+            <div class="tabble__sort-icon">
+              <span
+                class="triangle"
+                [classList]="getSortCondition('gateway')"
+              ></span>
+            </div>
+          </div>
+        </th>
+        <th (click)="sort('interface')">
+          <div class="tabble__header">
+            Интерфейс
+            <div class="tabble__sort-icon">
+              <span
+                class="triangle"
+                [classList]="getSortCondition('interface')"
+              ></span>
+            </div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (route of (routes | sortRoutes: sortField: sortDirection); track
+      route.uuid) {
+      <tr>
+        <td>{{ route.address }}</td>
+        <td>{{ route.gateway }}</td>
+        <td>{{ route.interface }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
